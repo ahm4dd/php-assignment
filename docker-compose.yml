@@ -1,0 +1,11 @@
+services:
+  web-server:
+    build: .
+    container_name: assign1-web
+    ports:
+      - "8080:80"
+    volumes:
+      - web-server-vol:/var/www/html
+
+volumes:
+  web-server-vol:

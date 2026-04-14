@@ -2,6 +2,7 @@
 session_start();
 $admin_username = 'admin';
 $admin_password = '12345';
+$error_message = '';
 
 // We are not going to hash for every request, but we should verify
 // $admin_password = password_hash('12345', PASSWORD_ARGON2I); // Hash with argon2 because it won the competition
@@ -25,7 +26,7 @@ if (isset($_POST['submit'])) {
         header('Location: dashboard.php');
         exit;
     } else {
-        echo "Invalid login credentials";
+        $error_message = 'Invalid login credentials';
     }
 }
 ?>
@@ -35,19 +36,30 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <form method="POST">
-        <label for="username-input"></label>
-        <input type="text" name="username" id="username-input">
+<body class="auth-page">
+    <main class="auth-wrapper">
+        <form method="POST" class="auth-card">
+            <p class="eyebrow">Admin area</p>
+            <h1>Login</h1>
+            <p class="auth-text">Enter your username and password to continue.</p>
 
-        <label for="password-input"></label>
-        <input type="password" name="password" id="password-input">
+            <?php if ($error_message) { ?>
+                <p class="message error"><?php echo $error_message; ?></p>
+            <?php } ?>
 
-        <input type="submit" name="submit">
-    </form>
+            <label for="username-input">Username</label>
+            <input type="text" name="username" id="username-input" placeholder="Enter username">
+
+            <label for="password-input">Password</label>
+            <input type="password" name="password" id="password-input" placeholder="Enter password">
+
+            <input type="submit" name="submit" value="Login" class="button">
+        </form>
+    </main>
 </body>
 
 </html>
