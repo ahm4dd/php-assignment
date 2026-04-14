@@ -2,6 +2,8 @@
 
 Simple PHP login and dashboard app.
 
+> We are not using a database, no real session saving and login handling, no real auth, pure PHP for learning
+
 ## Run with Docker Compose
 
 Make sure Docker Desktop or the Docker daemon is running, then from this folder run:
