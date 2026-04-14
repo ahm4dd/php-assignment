@@ -2,7 +2,8 @@
 
 Simple PHP login and dashboard app.
 
-> We are not using a database, no real session saving and login handling, no real auth, pure PHP for learning
+> We are not using a database, no real session saving and login handling, no real auth.
+> Pure PHP for a university assignment
 
 ## Run with Docker Compose
 
