@@ -1,10 +1,11 @@
 <?php
 session_start();
+// Hard coded, database not required for this assignment
 $admin_username = 'admin';
 $admin_password = '12345';
 $error_message = '';
 
-// We are not going to hash for every request, but we should verify
+// We are not going to hash for every request, but we should verify if we were to hash.
 // $admin_password = password_hash('12345', PASSWORD_ARGON2I); // Hash with argon2 because it won the competition
 if (isset($_POST['submit'])) {
     if (
@@ -16,7 +17,7 @@ if (isset($_POST['submit'])) {
         // Verify the hash if you hashed the password
         // password_verify($_POST['password'], $admin_password)
     ) {
-        session_regenerate_id(true); // This deletes the file for login to prevent sesion fixation.
+        session_regenerate_id(true); // This deletes the file for login to prevent session fixation.
 
         $_SESSION['user_id'] = 'long-UUID';
         $_SESSION['username'] = $_POST['username'];
